@@ -1,3 +1,5 @@
+package SearchiingTechniques;
+
 //kiran
 public class LinearSearch {
     public static int search(int arr[], int key) {
