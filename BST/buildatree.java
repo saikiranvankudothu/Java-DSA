@@ -112,6 +112,19 @@ public class buildatree {
         path.remove(path.size() - 1);
     }
 
+    public static boolean isValidBST(Node root, Node min, Node max) {
+        if (root == null) {
+            return false;
+        }
+        if (min != null && root.data <= min.data) {
+            return false;
+        }
+        if (max != null && root.data >= max.data) {
+            return false;
+        }
+        return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+    }
+
     public static void main(String[] args) {
         int values[] = { 8, 5, 3, 1, 4, 6, 10, 11, 14 };
         Node root = null;
@@ -125,6 +138,11 @@ public class buildatree {
         // System.out.println();
         // inorder(root);
         // pritnInRange(root, 2, 7);
-        printRoot2Leaf(root, new ArrayList<>());
+        // printRoot2Leaf(root, new ArrayList<>());
+        if (isValidBST(root, null, null)) {
+            System.out.println("The BST is valid");
+        } else {
+            System.out.println("The BST is not valid");
+        }
     }
 }
